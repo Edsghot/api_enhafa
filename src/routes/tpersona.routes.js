@@ -13,9 +13,10 @@ router.get('/',async(req,res)=>{
     res.send(persona)
 })
 
-router.get('/:id',(req,res)=>{
+router.get('/:id',async (req,res)=>{
     const {id} = req.params;
-    res.send('getid')
+    const persona = await service.findOne(id);
+    res.send(persona)
 })
 
 router.post('/',(req,res)=>{

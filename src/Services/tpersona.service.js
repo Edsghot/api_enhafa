@@ -16,7 +16,9 @@ class tpersonaService{
     }
 
     async findOne(id){
+        const [result] = await pool.query(query.getById,[id])
 
+        return result;
     }
 
     async update(id,changes){
