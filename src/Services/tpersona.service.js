@@ -1,4 +1,3 @@
-const boom = require('@hapi/boom')
 const {pool} = require('../database/connection.js')
 const {query} = require('../Querys/tpersona.query')
 
