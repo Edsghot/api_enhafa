@@ -15,10 +15,6 @@ app.get('/',(req,res)=>{
 
 routerApi(app)
 
-app.use(logErrors)
-app.use(errorHandler)
-
-console.log()
 
 app.listen(port)
 console.log("http://localhost:3000")
