@@ -1,26 +1,37 @@
 const express = require('express')
+const tobraService = require('../Services/tobra.service.js')
 
 const router = express.Router();
+const service = new tobraService();
 
-
-router.get('/',(req,res)=>{
-    
-    res.send('getAlll')
+router.get('/',async(req,res)=>{
+    const result = await service.find();
+    res.json(result)
 })
 
-router.get('/:id',(req,res)=>{
+router.get('/:id',async (req,res)=>{
     const {id} = req.params;
-    res.send('getid')
+    const result = await service.findOne(id);
+    res.json(result)
 })
 
-router.post('/',(req,res)=>{
-    res.send('post')
+router.post('/',async (req,res)=>{
+    const body = req.body;
+    const result = await service.create(body); 
+    res.json(result)
 })
 
-router.patch('/:id',(req,res)=>{
+router.patch('/:id',async (req,res)=>{
     const {id} = req.params;
-    res.send('patchid')
+    const body = req.body;
+    const result = await service.update(id,body);
+    res.json(result)
 })
 
+router.delete('/:id',async(req,res)=>{
+    const {id} = req.params;
+    const result = await service.delete(id);
+    res.json(result)
+})
 
 module.exports = router
